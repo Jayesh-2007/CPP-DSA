@@ -25,14 +25,47 @@ Node* buildTree(vector<int> preOrder) { // T.C: O(n)--> linear time complexity
     root->left = buildTree(preOrder);// generate left side of tree
     root->right = buildTree(preOrder);// generate right side of tree
     return root;
+}
 
+// Preorder traversal
+void preOrder(Node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    cout << root->data << " ";
+    preOrder(root->left);
+    preOrder(root->right);
+}
+
+// Inorder traversal
+void inorder(Node* root) {
+    if(root == NULL) {
+        return;
+    }
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
+}
+
+// PostOrder traversal
+void postOrder(Node* root) {
+    if(root==NULL) {
+        return;
+    }
+    postOrder(root->left);
+    postOrder(root->right);
+    cout << root->data << " ";
 }
 
 int main (){
     vector<int> preOrder = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
     Node* root = buildTree(preOrder);
-    cout << root->data << endl;
-    cout << root->left->data << endl;
-    cout << root->right->data << endl;
+    preOrder(root); // 1 2 3 4 5
+    cout << endl;
+    inorder(root); // 2 1 4 3 5
+    cout << endl;
+    postOrder(root); // 2 4 5 3 1
     return 0;
 }
