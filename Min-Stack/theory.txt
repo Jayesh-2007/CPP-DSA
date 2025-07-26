@@ -1,0 +1,43 @@
+Title: Min Stack - Simple Explanation
+
+Definition:
+A Min Stack is a special stack that supports all normal stack operations:
+- push(x)
+- pop()
+- top()
+- getMin()
+
+And getMin() returns the **minimum element** in the stack in O(1) time.
+
+Problem with Normal Stack:
+In a normal stack, finding the minimum element takes O(n) time by checking all elements.
+
+Why Min Stack?
+Min Stack is designed to give minimum value in O(1) time, which is useful in competitive programming and real-time systems.
+
+How it Works:
+We use TWO stacks:
+1. mainStack -> Stores all pushed elements.
+2. minStack  -> Keeps track of current minimum elements.
+
+Rules:
+- When pushing a new element x:
+    → Always push x to mainStack.
+    → If minStack is empty or x <= minStack.top(), also push x to minStack.
+
+- When popping an element:
+    → Pop from mainStack.
+    → If popped element is equal to minStack.top(), also pop from minStack.
+
+- getMin():
+    → Return top of minStack (it’s always the current minimum).
+
+Example:
+Push: 5 → minStack: 5
+Push: 3 → minStack: 5, 3
+Push: 7 → minStack: 5, 3
+Push: 2 → minStack: 5, 3, 2
+
+getMin() = 2
+After pop() (removing 2):
+getMin() = 3
