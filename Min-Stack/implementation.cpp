@@ -49,10 +49,11 @@ public:
     // return minimum element
     int getMin()
     {
-        if (minStack.empty()) {
-        cout << "Error: Stack is empty\n";
-        return -1; // or throw an exception
-    }
+        if (minStack.empty())
+        {
+            cout << "Error: Stack is empty\n";
+            return -1; // or throw an exception
+        }
         return minStack.top();
     }
 };

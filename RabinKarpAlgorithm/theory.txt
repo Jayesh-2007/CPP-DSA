@@ -1,0 +1,101 @@
+RABIN-KARP ALGORITHM (DETAILED THEORY WITH REAL-LIFE EXAMPLE)
+=========================================================================================================================
+
+-------------------------------------
+🔍 WHAT IS THE RABIN-KARP ALGORITHM?
+-------------------------------------
+Rabin-Karp is a string-searching algorithm that uses hashing to find the occurrence(s) of a "pattern" string within a "text" string.
+It is efficient when searching for multiple patterns in a text.
+
+--------
+🎯 GOAL:
+--------
+To find whether a pattern exists in the text, and if so, at which index/position.
+
+-------------------------------------------------------------
+REAL-LIFE EXAMPLE: FINDING A WORD IN A PARAGRAPH USING HASH
+-------------------------------------------------------------
+
+Imagine you are reading a book and looking for the word "data".
+Instead of reading every word carefully, you assign a code (hash value) to "data",
+then quickly scan the book by calculating hash values of every 4-letter word.
+
+As soon as the hash value matches, you check the actual word.
+
+Example:
+Text: "bigdataisfun"
+Pattern: "data"
+
+Hash("data") = 123 (assume)
+Now slide a window over the text and compare hash values of each 4-letter substring.
+
+"bigd" → hash = 100 ❌
+"igda" → hash = 110 ❌
+"gdat" → hash = 120 ❌
+"data" → hash = 123 ✅ → Match confirmed!
+
+-------------------------------------------------------------
+ALGORITHM EXPLAINED STEP-BY-STEP
+-------------------------------------------------------------
+
+1. Initialize:
+   - m = length of pattern
+   - n = length of text
+   - d = number of characters in the alphabet (typically 256 for ASCII)
+   - q = a large prime number to avoid hash collisions
+
+2. Calculate the hash of the pattern (p) and the first window of text (t).
+
+3. Slide the window over the text from index 0 to n-m:
+   - If p == t (hashes match), then do character-by-character comparison to verify.
+   - If match, print the starting index.
+   - Recalculate the hash of the next window using rolling hash technique.
+
+4. Rolling Hash Formula:
+   t_new = (d*(t_old - text[i]*h) + text[i+m]) % q --> You don't want to learn whole function you need to only know the variable of the function and working of function
+
+   If the result is negative, convert it to positive by adding q.
+
+-------------------------------------------------------------
+PROPERTIES OF HASH FUNCTIONS USED IN RABIN-KARP
+-------------------------------------------------------------
+- Deterministic: Same input always produces the same hash.
+- Efficient: Fast to compute.
+- Rolling: Allows efficient update of hash when sliding the window.
+- Not Cryptographic: Designed for speed, not security.
+
+-------------------------------------------------------------
+TIME COMPLEXITY
+-------------------------------------------------------------
+- Best & Average Case: O(n + m)
+- Worst Case (with many collisions): O(n * m)
+  But with a good hash function and prime q, collisions are rare.
+
+-------------------------------------------------------------
+ADVANTAGES OF RABIN-KARP
+-------------------------------------------------------------
+- Very fast for multiple pattern search.
+- Uses hash to skip unnecessary comparisons.
+-------------
+DISADVANTAGES
+-------------
+- Hash collisions can occur.
+- Less efficient than other algorithms for single pattern search (like KMP).
+
+-------------------------------------------------------------
+COMMON USES
+-------------------------------------------------------------
+- Plagiarism detection. --> Plagiarism detection is the process 
+			    of finding out whether content has been copied from another source.
+- Search engines.
+- Text editors (Find & Replace).
+- Pattern recognition.
+
+-------------------------------------------------------------
+SUMMARY:
+-------------------------------------------------------------
+Rabin-Karp uses smart hashing to avoid unnecessary comparisons.
+Think of it like assigning ID numbers to words, and only checking when the IDs match.
+
+It's like finding your friend in a crowd by scanning for their clothes color (hash),
+and only when it matches, you look closely at the face (character comparison).
