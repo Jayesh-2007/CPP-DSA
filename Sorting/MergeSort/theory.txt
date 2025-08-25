@@ -1,0 +1,73 @@
+═══════════════════════════════════════
+             📘 MERGE SORT NOTES
+═══════════════════════════════════════
+
+🔹 1. Definition
+---------------------------------------
+Merge Sort is a **Divide & Conquer** algorithm.
+It splits the array into halves → sorts them → merges them back.
+
+Formula:  
+Array = Divide ➝ Conquer ➝ Combine
+
+---------------------------------------
+
+🔹 2. Steps of Merge Sort
+---------------------------------------
+👉 Divide   : Split the array into 2 halves  
+👉 Conquer  : Recursively sort both halves  
+👉 Combine  : Merge sorted halves into one sorted array  
+
+---------------------------------------
+
+🔹 3. Key Concept
+---------------------------------------
+- A single element is always "sorted".  
+- Merge Sort keeps dividing until only 1 element remains.  
+- Then merging happens in sorted order.
+
+---------------------------------------
+
+🔹 4. Example (Step by Step)
+---------------------------------------
+Input: [38, 27, 43, 3, 9, 82, 10]
+
+Step 1: Split → [38, 27, 43, 3]   |   [9, 82, 10]  
+Step 2: Split → [38, 27] [43, 3] | [9, 82] [10]  
+Step 3: Split → [38] [27] [43] [3] [9] [82] [10]  
+Step 4: Merge → [27, 38], [3, 43], [9, 82], [10]  
+Step 5: Merge → [27, 38, 3, 43], [9, 10, 82]  
+Step 6: Merge → [3, 9, 10, 27, 38, 43, 82]  
+
+✅ Sorted Result: [3, 9, 10, 27, 38, 43, 82]
+
+---------------------------------------
+
+🔹 5. Time & Space Complexity
+---------------------------------------
+⏱ Time Complexity:
+- Best Case    : O(n log n)  
+- Average Case : O(n log n)  
+- Worst Case   : O(n log n)  
+
+💾 Space Complexity: O(n) (needs extra array for merging)
+
+---------------------------------------
+
+🔹 6. Pros 👍 & Cons 👎
+---------------------------------------
+✅ Always O(n log n) performance  
+✅ Stable Sorting (keeps equal elements in order)  
+❌ Requires Extra Memory O(n)  
+
+---------------------------------------
+
+🔹 7. When to Use Merge Sort?
+---------------------------------------
+✔️ When stability is important  
+✔️ When handling large datasets  
+✔️ When worst-case performance matters  
+
+═══════════════════════════════════════
+              ✨ END OF NOTES ✨
+═══════════════════════════════════════
