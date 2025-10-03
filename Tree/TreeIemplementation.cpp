@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
 
 class Node {
@@ -16,14 +17,14 @@ public:
 
 static int idx = -1;
 
-Node* buildTree(vector<int> preOrder) { // T.C: O(n)--> linear time complexity
+Node* buildTree(vector<int> preorderVec) { // T.C: O(n)--> linear time complexity
     idx++;
-    if(preOrder[idx] == -1) {
+    if(preorderVec[idx] == -1) {
         return NULL;
     }
-    Node* root = new Node(preOrder[idx]);
-    root->left = buildTree(preOrder);// generate left side of tree
-    root->right = buildTree(preOrder);// generate right side of tree
+    Node* root = new Node(preorderVec[idx]);
+    root->left = buildTree(preorderVec);// generate left side of tree
+    root->right = buildTree(preorderVec);// generate right side of tree
     return root;
 }
 
@@ -92,8 +93,8 @@ void levelOrder(Node* root) {
 }
 
 int main (){
-    vector<int> preOrder = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
-    Node* root = buildTree(preOrder);
+    vector<int> preorderVec = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
+    Node* root = buildTree(preorderVec);
     preOrder(root); // 1 2 3 4 5
     cout << endl;
     inorder(root); // 2 1 4 3 5
