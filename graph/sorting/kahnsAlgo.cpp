@@ -69,6 +69,7 @@ public:
         for(int val: res) {
             cout << val << " ";
         }
+        cout << endl;
     }
 };
 
