@@ -3,29 +3,36 @@
 using namespace std;
 
 // Given a sorted array, return all unique pairs that sum to target
-vector<vector<int>> solution(const vector<int>& nums, int target) {
+vector<vector<int>> solution(const vector<int> &nums, int target)
+{
     vector<vector<int>> ans;
     int left = 0;
     int right = (int)nums.size() - 1;
 
-    while (left < right) {
+    while (left < right)
+    {
         long long sum = (long long)nums[left] + (long long)nums[right];
 
-        if (sum == target) {
+        if (sum == target)
+        {
             ans.push_back({nums[left], nums[right]});
 
             // skip duplicates from the left
             int curL = nums[left];
-            while (left < right && nums[left] == curL) left++;
+            while (left < right && nums[left] == curL)
+                left++;
 
             // skip duplicates from the right
             int curR = nums[right];
-            while (left < right && nums[right] == curR) right--;
+            while (left < right && nums[right] == curR)
+                right--;
         }
-        else if (sum > target) {
+        else if (sum > target)
+        {
             right--;
         }
-        else { // sum < target
+        else
+        { // sum < target
             left++;
         }
     }
@@ -33,18 +40,22 @@ vector<vector<int>> solution(const vector<int>& nums, int target) {
     return ans;
 }
 
-void printPairs(const vector<vector<int>>& pairs) {
-    if (pairs.empty()) {
+void printPairs(const vector<vector<int>> &pairs)
+{
+    if (pairs.empty())
+    {
         cout << "No pairs found\n";
         return;
     }
-    for (const auto& p : pairs) {
+    for (const auto &p : pairs)
+    {
         cout << "(" << p[0] << ", " << p[1] << ") ";
     }
     cout << "\n";
 }
 
-int main() {
+int main()
+{
     // Note: inputs must be sorted for the two-pointer strategy to work.
     vector<int> t1 = {1, 2, 2, 3, 4, 4, 5};
     cout << "Test 1: nums = {1,2,2,3,4,4,5}, target = 6 -> ";
